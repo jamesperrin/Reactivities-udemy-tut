@@ -21,7 +21,7 @@ namespace API.Controllers
         public async Task<ActionResult<Activity>> GetActivity(Guid id)
         {
             // return await _context.Activities.FindAsync(id);
-            return Ok();
+            return await Mediator.Send(new Details.Query{Id = id});
         }
     }
 }
