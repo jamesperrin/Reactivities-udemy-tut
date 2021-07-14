@@ -12,7 +12,9 @@ export default function ActivityList({ activities }: Props) {
 				{activities.map((activity) => (
 					<Item key={activity.id}>
 						<Item.Content>
-							<Item.Header as='a' title={`View details for ${activity.title}`} >{activity.title}</Item.Header>
+							<Item.Header as='a' title={`View details for ${activity.title}`}>
+								{activity.title}
+							</Item.Header>
 							<Item.Meta>{activity.date}</Item.Meta>
 							<Item.Description>
 								<div>{activity.description}</div>
