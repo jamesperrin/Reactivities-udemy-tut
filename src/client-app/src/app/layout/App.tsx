@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, List } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import { Activity } from '../models/activities';
 import NavBar from './NavBar';
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
@@ -24,13 +24,22 @@ function App() {
 		setSelectedActivity(undefined);
 	}
 
-	function handleFormOpen(id?: string){
+	function handleFormOpen(id?: string) {
 		id ? handleSelectActivity(id) : handleCancelSelectActivity();
 		setEditMode(true);
 	}
 
-	function handleFormClose(){
+	function handleFormClose() {
 		setEditMode(false);
+	}
+
+	function handleCreateOrEditActivity(activity: Activity) {
+		activity.id
+			? setActivities([...activities.filter((x) => x.id !== activity.id), activity])
+			: setActivities([...activities, activity]);
+
+		setEditMode(false);
+		setSelectedActivity(activity);
 	}
 
 	return (
@@ -45,6 +54,7 @@ function App() {
 					editMode={editMode}
 					openForm={handleFormOpen}
 					closeForm={handleFormClose}
+					createOrEditActivity={handleCreateOrEditActivity}
 				/>
 			</Container>
 		</Fragment>
