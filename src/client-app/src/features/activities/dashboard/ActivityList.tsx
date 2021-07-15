@@ -5,8 +5,9 @@ import { Activity } from '../../../app/models/activities';
 interface Props {
 	activities: Activity[];
 	selectActivity: (id: string) => void;
+	deleteActivity: (id: string) => void;
 }
-export default function ActivityList({ activities, selectActivity }: Props) {
+export default function ActivityList({ activities, selectActivity, deleteActivity }: Props) {
 	return (
 		<Segment>
 			<Item.Group divided>
@@ -30,6 +31,13 @@ export default function ActivityList({ activities, selectActivity }: Props) {
 									content='View'
 									title={`View ${activity.title}`}
 									color='blue'
+								/>
+								<Button
+									onClick={() => deleteActivity(activity.id)}
+									floated='right'
+									content='Delete'
+									title={`Delete ${activity.title}`}
+									color='red'
 								/>
 								<Label basic content={activity.category} />
 							</Item.Extra>

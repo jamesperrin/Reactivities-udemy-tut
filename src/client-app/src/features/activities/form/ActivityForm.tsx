@@ -9,14 +9,14 @@ interface Props {
 }
 
 export default function ActivityForm({ activity: selectedActivity, closeForm, createOrEditActivity }: Props) {
-	let newActivity = {
+	const newActivity = {
 		id: '',
 		title: '',
 		date: '',
 		description: '',
 		category: '',
 		city: '',
-		venue: ''
+		venue: '',
 	};
 
 	const initialState = selectedActivity ?? newActivity;
