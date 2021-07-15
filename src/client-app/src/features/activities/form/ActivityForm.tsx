@@ -9,22 +9,21 @@ interface Props {
 }
 
 export default function ActivityForm({ activity: selectedActivity, closeForm, createOrEditActivity }: Props) {
-	const initialObject = {
+	let newActivity = {
 		id: '',
 		title: '',
 		date: '',
 		description: '',
 		category: '',
 		city: '',
-		venue: '',
+		venue: ''
 	};
 
-	const initialState = selectedActivity ?? initialObject;
+	const initialState = selectedActivity ?? newActivity;
 
 	const [activity, setActivity] = useState(initialState);
 
 	function handleSubmit() {
-		console.log(activity);
 		createOrEditActivity(activity);
 	}
 
@@ -36,7 +35,7 @@ export default function ActivityForm({ activity: selectedActivity, closeForm, cr
 
 	return (
 		<Segment clearing>
-			<Form onSubmit={handleSubmit} autocomplete='off'>
+			<Form onSubmit={handleSubmit} autoComplete='off'>
 				<Form.Input
 					placeholder='Title'
 					value={activity.title}
