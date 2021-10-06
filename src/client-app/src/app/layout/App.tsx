@@ -17,6 +17,7 @@ function App() {
 	return (
 		<Fragment>
 			<ToastContainer position='bottom-right' hideProgressBar />
+			<Route exact path='/' component={HomePage} />
 			<Route
 				path={'/(.+)'}
 				render={() => (
@@ -24,6 +25,7 @@ function App() {
 						<NavBar />
 						<Container style={{ marginTop: '7em' }}>
 							<Switch>
+								<Route exact path='/activities' component={ActivityDashboard} />
 								<Route exact path='/activities/:id' component={ActivityDetails} />
 								<Route
 									key={location.key}
