@@ -1,12 +1,12 @@
 import React, { useState, ChangeEvent } from 'react';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
-import { Button, Form, Segment } from 'semantic-ui-react';
+import { Button, Segment } from 'semantic-ui-react';
 import { useStore } from '../../../app/stores/store';
 import { useEffect } from 'react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { v4 as uuid } from 'uuid';
-import { Formik } from 'formik';
+import { Formik, Form, Field } from 'formik';
 
 function ActivityForm() {
 	const history = useHistory();
@@ -53,51 +53,14 @@ function ActivityForm() {
 	return (
 		<Segment clearing>
 			<Formik enableReinitialize initialValues={activity} onSubmit={(values) => console.log(values)}>
-				{({ values: activity, handleChange, handleSubmit }) => (
-					<Form onSubmit={handleSubmit} autoComplete='off'>
-						<Form.Input
-							placeholder='Title'
-							value={activity.title}
-							name='title'
-							id='title'
-							onChange={handleChange}
-						/>
-						<Form.TextArea
-							placeholder='Description'
-							value={activity.description}
-							name='description'
-							id='description'
-							onChange={handleChange}
-						/>
-						<Form.Input
-							placeholder='Category'
-							value={activity.category}
-							name='category'
-							id='category'
-							onChange={handleChange}
-						/>
-						<Form.Input
-							type='date'
-							placeholder='Date'
-							value={activity.date}
-							name='date'
-							id='date'
-							onChange={handleChange}
-						/>
-						<Form.Input
-							placeholder='City'
-							value={activity.city}
-							name='city'
-							id='city'
-							onChange={handleChange}
-						/>
-						<Form.Input
-							placeholder='Venue'
-							value={activity.venue}
-							name='venue'
-							id='venue'
-							onChange={handleChange}
-						/>
+				{({ handleSubmit }) => (
+					<Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
+						<Field placeholder='Title' name='title' id='title' />
+						<Field placeholder='Description' name='description' id='description' />
+						<Field placeholder='Category' name='category' id='category' />
+						<Field type='date' placeholder='Date' name='date' id='date' />
+						<Field placeholder='City' name='city' id='city' />
+						<Field placeholder='Venue' name='venue' id='venue' />
 						<Button loading={loading} floated='right' positive type='submit' content='Submit' />
 						<Button as={NavLink} to='/activities' floated='right' type='button' content='Cancel' />
 					</Form>
