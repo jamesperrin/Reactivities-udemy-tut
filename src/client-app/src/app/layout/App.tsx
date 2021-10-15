@@ -26,13 +26,13 @@ function App() {
 						<Container style={{ marginTop: '7em' }}>
 							<Switch>
 								<Route exact path='/activities' component={ActivityDashboard} />
-								<Route exact path='/activities/:id' component={ActivityDetails} />
+								<Route path='/activities/:id' component={ActivityDetails} />
 								<Route
 									key={location.key}
 									path={['/createActivity', '/manage/:id']}
 									component={ActivityForm}
 								/>
-								<Route path='/server-error' component={ServerError} />
+								{/* <Route path='/server-error' component={ServerError} /> */}
 								<Route component={NotFound} />
 							</Switch>
 						</Container>

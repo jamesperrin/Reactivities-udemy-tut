@@ -3,8 +3,9 @@ import { Container, Header, Segment } from 'semantic-ui-react';
 import { useStore } from '../../app/stores/store';
 import { observable } from 'mobx';
 
-function ServerError() {
+export default observable(function ServerError() {
 	const { commonStore } = useStore();
+
 	return (
 		<Container>
 			<Header as='h1' content='Server Error' />
@@ -17,6 +18,4 @@ function ServerError() {
 			)}
 		</Container>
 	);
-}
-
-export default observable(ServerError);
+});
