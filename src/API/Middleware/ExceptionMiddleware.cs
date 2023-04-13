@@ -49,7 +49,7 @@ namespace API.Middleware
         }
     }
 
-#if NOT_IMPLEMENTED
+#if !NOT_IMPLEMENTED
     // Extension method used to add the middleware to the HTTP request pipeline.
     public static class ExceptionMiddlewareExtensions
     {
@@ -57,6 +57,6 @@ namespace API.Middleware
         {
             return builder.UseMiddleware<ExceptionMiddleware>();
         }
-    } 
+    }
 #endif
 }

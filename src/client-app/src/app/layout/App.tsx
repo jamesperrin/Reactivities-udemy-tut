@@ -32,7 +32,7 @@ function App() {
 									path={['/createActivity', '/manage/:id']}
 									component={ActivityForm}
 								/>
-								{/* <Route path='/server-error' component={ServerError} /> */}
+								<Route path='/server-error' component={ServerError} />
 								<Route component={NotFound} />
 							</Switch>
 						</Container>

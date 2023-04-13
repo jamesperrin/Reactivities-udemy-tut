@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Header, Segment } from 'semantic-ui-react';
 import { useStore } from '../../app/stores/store';
-import { observable } from 'mobx';
+import { observer } from 'mobx-react-lite';
 
-export default observable(function ServerError() {
+export default observer(function ServerError() {
 	const { commonStore } = useStore();
 
 	return (
